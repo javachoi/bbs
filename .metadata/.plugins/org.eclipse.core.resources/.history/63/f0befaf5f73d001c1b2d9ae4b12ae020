@@ -1,0 +1,14 @@
+[결과]
+2^3 = 8
+i i   o
+
+create or replace compute_power(
+	a_num in number,
+	a_exponent in out number,
+	a_power out number
+)
+is
+begin
+	if then
+	end if;
+end;
