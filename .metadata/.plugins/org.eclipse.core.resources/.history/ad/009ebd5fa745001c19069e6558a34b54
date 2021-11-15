@@ -1,0 +1,30 @@
+package mms.member.action;
+
+import java.util.Scanner;
+
+import mms.member.svc.MemberAddService;
+import mms.member.util.ConsoleUtil;
+import mms.member.vo.Member;
+
+public class MemberAddAction {
+	@Override
+	public void execute(Scanner sc) throws Exception {
+		
+		ConsoleUtil cu = new ConsoleUtil();
+		Member newMember = cu.getNewMember(sc);
+		
+		MemberAddService mas = new MemberAddService();
+		
+		boolean isSuccess = mas.addMember(newMember);
+		
+		if(isSuccess) {
+			cu.printAddSuccessMessage(newMember);
+		}
+		else {
+			cu.printAddFailMessage(newMember);
+		}
+		
+		
+	}
+}
+

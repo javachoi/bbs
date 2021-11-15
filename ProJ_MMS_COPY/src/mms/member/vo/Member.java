@@ -1,6 +1,13 @@
 package mms.member.vo;
 
 public class Member {
+//	    id number primary key,
+//	    name varchar2(12) unique not null,
+//	    addr varchar2(50) not null,
+//	    nation varchar2(12) not null,
+//	    email varchar2(30) not null,
+//	    age number null
+	
 	private int id;
 	private String name;
 	private String addr;
@@ -8,15 +15,14 @@ public class Member {
 	private String email;
 	private int age;
 	
-	public Member(int id, String name, String addr, String nation, String email, int age) {
-		this.id = id;
+	//id 제외 : sequence 사용 
+	public Member(String name, String addr, String nation, String email, int age) {
 		this.name = name;
 		this.addr = addr;
 		this.nation = nation;
 		this.email = email;
 		this.age = age;
 	}
-	
 	
 	public int getId() {
 		return id;
@@ -66,5 +72,8 @@ public class Member {
 		this.age = age;
 	}
 
-
+	@Override
+		public String toString() {
+			String result = ("name = " + name +", addr = " + addr + ", email = " + email + ", age = " + age);
+		}
 }

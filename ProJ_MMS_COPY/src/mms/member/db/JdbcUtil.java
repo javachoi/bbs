@@ -1,6 +1,5 @@
 package mms.member.db;
 
-import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -8,13 +7,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import plsql.ProcedureTest;
-
 
 public class JdbcUtil {
-	
-	Connection con;
-
+	// 메모리에 실행된 상태로 존재
 	static {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -22,141 +17,62 @@ public class JdbcUtil {
 			e.printStackTrace();
 		}
 	}
-
-	public void connect() {
+	// 메모리에 있는 메소드 호출이 일어나야 실행 됨 
+	public static Connection getConnection() {
+		Connection con = null;
 		try {
 			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "javalink", "javalink");
-			System.out.println("Connection Success!!!");
-		} catch (SQLException se) {
-			se.printStackTrace();
-		}
-	}
-
-	public void insert() {
-		PreparedStatement pstmt = null;
-		connect();
-		try {
-			String sql = "insert into member3 values(?,?,?,?,?,?)";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1,"Alpha");
-			pstmt.setString(2,"1234");
-			pstmt.setString(3,"AI");
-			pstmt.setInt(4,20);
-			pstmt.setString(5,"LA");
-			pstmt.setString(6,"Alpha@aa.com");
-			int count = pstmt.executeUpdate();
-			if (count > 0)
-				System.out.println("insert success!!!");
-			else
-				System.out.println("insert fail!!!");
-
+			con.setAutoCommit(false); // true:commit실행 ,false:commit의 시작점 transaction 시작
 		} catch (SQLException e) {
-
-		} finally {
-			try {
-				pstmt.close();
-				con.close();
-			} catch (SQLException e) {
-
-			}
-		}
-
-	}
-
-	public void select() {
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql = "select * from member3";
-		connect();
-
-		try {
-			pstmt = con.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				System.out.println("아이디 : " + rs.getString(1) + ", 비밀번호 : " + rs.getString(2) + ", 이름 : "
-						+ rs.getString(3) + ", 나이 : " + rs.getInt(4) + ", 주소 : " + rs.getString(5) + ", 이메일 : "
-						+ rs.getString(6));
-			}
-		} catch (SQLException e) {
-
-		} finally {
-			try {
-				pstmt.close();
-				con.close();
-			} catch (SQLException e) {
-			}
-		}
-	}
-
-	public void insertMember() {
-		CallableStatement cs = null;
-		connect();
-		try {
-			String sql = "{call user_insert(?,?,?,?,?,?)}";
-			cs = con.prepareCall(sql);
-			
-			cs.setString(1,"Procedure");
-			cs.setString(2,"1234");
-			cs.setString(3,"홍길동");
-			cs.setInt(4, 19);
-			cs.setString(5,"강원도");
-			cs.setString(6,"hong@aa.com");
-			int count = cs.executeUpdate();
-			if (count > 0)
-				System.out.println("insert success!!!");
-			else
-				System.out.println("insert fail!!!");
-
-		} catch (SQLException e) {
-
-		} finally {
-			try {
-				cs.close();
-				con.close();
-			} catch (SQLException e) {
-
-			}
-		}
-
-	}
-
-	public static void main(String[] args) {
-		ProcedureTest pt = new ProcedureTest();
-		System.out.println("*** 저장 프로시저 호출전 데이터");
-		pt.insert();
-		pt.select();
-
-		System.out.println("*** 저장 프로시저 호출후 데이터");
-		pt.insertMember();
-	}
-}
-	public static Connection getConnection(){
-		//디비 작업에 필요한 Connection 객체를 생성해 주는 메소드
-	}
-	public static void close(Connection con){
-		try{
-			con.close();
-		}
-		catch(SQLException e){
 			e.printStackTrace();
 		}
+		return con;
 	}
-
+	public static void close(Connection con) {
+		try {
+			con.close();
+		} catch (SQLException e) {
+		}
+	}
+	public static void close(Statement stmt) {
+		try {
+			stmt.close();
+		} catch (SQLException e) {
+	}
+	}
+	public static void close(PreparedStatement pstmt) {
+		try {
+			pstmt.close();
+		} catch (SQLException e) {
+	}
+	}
+	public static void close(ResultSet rs) {
+		try {
+			rs.close();
+		} catch (SQLException e) {
+	}
+	}
+	
 	//transaction 처리 메소드
-
-	public static void commit (Connection con) {
-		con.commit(); // insert, update,delete
-		
-
+	public static void commit(Connection con) {
+		try {
+			con.commit(); // insert, update, delete
+		} catch (SQLException e) {
+			System.out.println("Commit Error");
+		}
 	}
 
-	public static void rollback (Connection con) {
-		con.rollback();
-
-
+	public static void rollback(Connection con) {
+		try {
+			con.rollback(); // insert, update, delete
+		} catch (SQLException e) {
+			System.out.println("Rollback Error");
+		
+		}
+	}
 
 
 
 		}
 
-}
+

@@ -1,0 +1,18 @@
+package mms.member.util;
+// 사용자 입력
+
+import java.util.Scanner;
+
+// 키보드 입력
+public class ConsoleUtil {
+// 1.회원등록
+	public Member getMember (Scanner sc) {
+		
+		
+		return newMember();
+		
+	}
+	public void printAddSuccessMessage(Member newMember) {
+		System.out.println(neMember.getName() + "회원정보 추가성공");
+	}
+}

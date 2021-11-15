@@ -1,0 +1,8 @@
+package mms.member.util;
+// 사용자 입력
+
+// 키보드 입력
+public class ConsoleUtil {
+
+
+}

@@ -1,0 +1,25 @@
+package mms.member.dao;
+
+import java.sql.Connection;
+
+public class MemberDAO {
+	Connection con;
+	
+	public MemberDAO (Connection con) {
+		this.con = con;
+	}
+	
+	//1. 회원등록
+	public int insertNewMember (Member newMember) {
+		String sql = "insert~~~";
+		return 0;
+	}
+
+	// 2. 회원목록보기
+	
+	// 3. 특정 회원 정보보기 
+	
+	// 4. 회원정보 수정
+	
+	// 5. 회원정보 삭제 
+}
