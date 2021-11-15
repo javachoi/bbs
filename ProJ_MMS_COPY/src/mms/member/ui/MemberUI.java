@@ -8,6 +8,8 @@ import mms.member.contoller.MemberController;
 
 public class MemberUI {
 	public static void main(String[] args) {
+		System.out.print("Pull 연습");
+			
 		boolean isStop = false;
 		MemberController memberController = new MemberController();
 		Scanner sc = new Scanner(System.in);
@@ -26,7 +28,7 @@ public class MemberUI {
 				action = new MemberAddAction(); // 1.회원등록 
 				break;
 				
-		
+	
 				
 			default:
 				break;
