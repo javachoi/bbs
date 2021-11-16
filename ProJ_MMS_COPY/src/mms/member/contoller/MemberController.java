@@ -1,15 +1,13 @@
 package mms.member.contoller;
 
 import java.util.Scanner;
-import java.util.Vector;
-
 import mms.member.action.Action;
 
 public class MemberController {
 	
 	public void processRequest(Action action,Scanner sc){
 		try{
-		action.execute(sc);
+		action.excute(sc);
 		}
 		catch(Exception e){
 			e.printStackTrace();

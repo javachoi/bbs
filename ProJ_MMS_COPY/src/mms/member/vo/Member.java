@@ -73,7 +73,9 @@ public class Member {
 	}
 
 	@Override
-		public String toString() {
-			String result = ("name = " + name +", addr = " + addr + ", email = " + email + ", age = " + age);
+	public String toString() {
+		String result = "name = " + name + ", addr = " + addr + ", email = " + email + ", nation = " + nation + ", age = " + age;
+		return result;
 		}
+	
 }

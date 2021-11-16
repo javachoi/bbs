@@ -1,0 +1,26 @@
+package mms.member.action;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import mms.member.svc.MemberAddService;
+import mms.member.svc.MemberListService;
+import mms.member.util.ConsoleUtil;
+import mms.member.vo.Member;
+
+public class MemberListAction {
+	
+	@Override
+	public void execute(Scanner sc) throws Exception {
+		ConsoleUtil cu = new ConsoleUtil();
+		ArrayList<Member> members = new ArrayList<>();
+		MemberListService memberlistservice = new MemberListService();
+		
+		members = memberlistservice.getMemberList();
+		
+	}
+
+
+	}
+
+

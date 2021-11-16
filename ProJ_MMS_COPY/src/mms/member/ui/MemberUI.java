@@ -4,14 +4,17 @@ import java.util.Scanner;
 
 import mms.member.action.Action;
 import mms.member.action.MemberAddAction;
+import mms.member.action.MemberListAction;
+import mms.member.action.MemberModifyAction;
+import mms.member.action.MemberRemoveAction;
 import mms.member.contoller.MemberController;
 
 public class MemberUI {
 	public static void main(String[] args) {
-		System.out.print("Pull 연습");
-		System.out.print("commit-push 연습");
-		System.out.print("slave branch 연습");
-			
+//		System.out.print("Pull 연습");
+//		System.out.print("commit-push 연습");
+//		System.out.print("slave branch 연습");
+//			
 		boolean isStop = false;
 		MemberController memberController = new MemberController();
 		Scanner sc = new Scanner(System.in);
@@ -29,12 +32,28 @@ public class MemberUI {
 			case 1:
 				action = new MemberAddAction(); // 1.회원등록 
 				break;
+			case 2:
+				action = new MemberListAction();
+				break;
+			case 3:
+				action = new MemberModifyAction();
+				break;
+			case 4:
+				action = new MemberRemoveAction();
+				break;
+			case 5:
+				System.out.println("프로그램 종료!");
+				isStop = true;
+				break;
 				
-	
-				
-			default:
+			default: 
 				break;
 			}
-		} while (!isStop);
-	}
+			
+		 if(action != null) {
+        	memberController.processRequest(action, sc);
+        }
+	} while (!isStop);
+
+}
 }

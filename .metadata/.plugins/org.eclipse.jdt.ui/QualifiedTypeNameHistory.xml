@@ -23,17 +23,20 @@
     <fullyQualifiedTypeName name="java.sql.CallableStatement"/>
     <fullyQualifiedTypeName name="java.lang.Exception"/>
     <fullyQualifiedTypeName name="javax.swing.Action"/>
-    <fullyQualifiedTypeName name="mms.member.contoller.MemberController"/>
     <fullyQualifiedTypeName name="mms.member.action.MemberAddAction"/>
     <fullyQualifiedTypeName name="mms.member.action.Action"/>
-    <fullyQualifiedTypeName name="java.sql.Connection"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
-    <fullyQualifiedTypeName name="mms.member.dao.MemberDAO"/>
-    <fullyQualifiedTypeName name="mms.member.db.JdbcUtil"/>
-    <fullyQualifiedTypeName name="java.util.Scanner"/>
-    <fullyQualifiedTypeName name="mms.member.vo.Member"/>
     <fullyQualifiedTypeName name="mms.member.util.ConsoleUtil"/>
     <fullyQualifiedTypeName name="mms.member.svc.MemberAddService"/>
     <fullyQualifiedTypeName name="java.net.InetSocketAddress"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="mms.member.action.MemberListAction"/>
+    <fullyQualifiedTypeName name="mms.member.action.MemberModifyAction"/>
+    <fullyQualifiedTypeName name="mms.member.contoller.MemberController"/>
+    <fullyQualifiedTypeName name="mms.member.svc.MemberListService"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="mms.member.dao.MemberDAO"/>
+    <fullyQualifiedTypeName name="mms.member.vo.Member"/>
+    <fullyQualifiedTypeName name="mms.member.db.JdbcUtil"/>
 </qualifiedTypeNameHistroy>

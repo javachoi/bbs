@@ -1,0 +1,26 @@
+package mms.member.svc;
+
+import java.sql.Connection;
+import java.util.ArrayList;
+
+import mms.member.dao.MemberDAO;
+import mms.member.db.JdbcUtil;
+import mms.member.vo.Member;
+
+public class MemberListService {
+	
+	Connection con = null;
+	
+	public ArrayList<Member> getMemberList() {
+		
+		ArrayList<Member> members = new ArrayList<Member>();
+		
+		con = JdbcUtil.getConnection();
+		MemberDAO dao = new MemberDAO(con);
+		
+		members = dao.selectMemberList();		
+		
+		return members;
+	}
+
+}

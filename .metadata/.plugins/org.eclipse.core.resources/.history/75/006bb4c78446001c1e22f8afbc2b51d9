@@ -1,0 +1,29 @@
+package mms.member.svc;
+
+import java.sql.Connection;
+
+import mms.member.dao.MemberDAO;
+import mms.member.db.JdbcUtil;
+
+public class MemberRemoveService {
+	
+	public boolean removeMember(String name) {
+		boolean isModifySuccess = false;
+		
+		Connection con = JdbcUtil.getConnection();
+		MemberDAO memberDAO = new MemberDAO(con);
+		
+		int updateCount = memberDAO.deleteMember(name);
+		if (updateCount > 0) {
+			isModifySuccess = true;
+			JdbcUtil.commit(con);
+			
+		} else {
+			JdbcUtil.rollback(con);
+		}
+			JdbcUtil.close(con);
+		return isModifySuccess;
+
+	}
+
+}
